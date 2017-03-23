@@ -9,33 +9,35 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example2" class="table table-bordered table-hover">
+                    <table id="product_list" class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>标题</th>
                             <th>产品编号</th>
                             <th>价格</th>
                             <th>产品示例图片</th>
-                            <th>产品地址</th>
+                            {{--<th>产品地址</th>--}}
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($productList as $product)
                             <tr>
-                                <td>title</td>
-                                <td>product_no</td>
-                                <td>price</td>
-                                <td>main_pic</td>
-                                <td>url</td>
+                                <td><a href="{{ $product['product_url'] }}" target="_blank">{{ $product['product_title'] }}</a></td>
+                                <td>{{ $product['product_no'] }}</td>
+                                <td>{{ $product['product_price'] }}</td>
+                                <td><img src="{{ $product['product_pic_url'] }}"></td>
+{{--                                <td>{{ $product['product_url'] }}</td>--}}
                             </tr>
+                        @endforeach
                         </tbody>
                         <tfoot>
-                        {{--<tr>--}}
-                            {{--<th>Rendering engine</th>--}}
-                            {{--<th>Browser</th>--}}
-                            {{--<th>Platform(s)</th>--}}
-                            {{--<th>Engine version</th>--}}
-                            {{--<th>CSS grade</th>--}}
-                        {{--</tr>--}}
+
+                        <div>
+                            <div class="box-footer">
+                                {{--{{ $students->render() }}--}}
+                                {{ $paginator->render() }}
+                            </div>
+                        </div>
                         </tfoot>
                     </table>
                 </div>
@@ -45,4 +47,5 @@
         </div>
         <!-- /.col -->
     </div>
+
 @endsection

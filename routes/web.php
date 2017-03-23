@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('admin', function () {
+    return view('dashboard');
+});
+Route::get('test', 'TestController@index');
+Route::get('product', ['uses' => 'ProductController@index']);
